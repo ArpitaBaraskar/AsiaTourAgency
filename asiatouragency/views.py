@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse 
+from .models import Tour
 # Create your views here.
 def index(request):
-    return HttpResponse("Welcome to Asia Tour Agency!") 
+    tours = Tour.objects.all()
+    context = {'tours': tours}
+    return render(request, "tours/index.html", context)
